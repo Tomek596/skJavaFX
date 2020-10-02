@@ -181,7 +181,5 @@ nbdist/
 .idea/modules.xml
 .idea/uiDesigner.xml
 .idea/vcs.xml
-pom.xml
 skJavaFX.iml
-src/
 target/

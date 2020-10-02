@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import java.net.URL?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="background" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <Button layoutX="534.0" layoutY="14.0" maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" styleClass="exit-button" text="X" textAlignment="CENTER" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
+        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="20.0" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="60.0">
+            <children>
+            <Label styleClass="title" text="ERP System" />
+                <Label text="Zaloguj się" />
+                <HBox alignment="CENTER" prefWidth="200.0" spacing="20.0">
+                    <children>
+                        <Label text="Login" />
+                        <TextField />
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER" layoutX="10.0" layoutY="156.0" prefWidth="200.0" spacing="20.0">
+                    <children>
+                        <Label text="Hasło" />
+                        <TextField />
+                    </children>
+                </HBox>
+                <Button mnemonicParsing="false" text="Zaloguj się" />
+            </children>
+        </VBox>
+    </children>
+    <stylesheets>
+        <URL value="@../css/global-colors.css" />
+        <URL value="@../css/login.css" />
+    </stylesheets>
+</AnchorPane>
