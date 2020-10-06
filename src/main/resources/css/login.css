@@ -19,3 +19,15 @@
     -fx-background-color: -fx-primary-background;
     -fx-border-color: -fx-primary-blue;
 }
+.text{
+    -fx-text-fill: -fx-primary-blue;
+}
+.login-button{
+    -fx-text-fill: -fx-primary-blue;
+    -fx-background-color: -fx-primary-background;
+    -fx-border-color: -fx-primary-blue;
+    -fx-background-radius: 0;
+}
+.login-button:hover{
+    -fx-background-color: -fx-secindary-background;
+}
