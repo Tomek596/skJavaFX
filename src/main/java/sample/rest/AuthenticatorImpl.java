@@ -18,19 +18,22 @@ public class AuthenticatorImpl implements Authenticator {
 
     @Override
     public void authenticate(OperatorCredentialsDTO operatorCredentialsDTO, AuthenticationResultHandler authenticationResultHandler) {
-
         Runnable authenticationTask = () -> {
             processAuthentication(operatorCredentialsDTO, authenticationResultHandler);
         };
         Thread authenticationThread = new Thread(authenticationTask);
         authenticationThread.setDaemon(true);
         authenticationThread.start();
-
     }
 
     private void processAuthentication(OperatorCredentialsDTO operatorCredentialsDTO, AuthenticationResultHandler authenticationResultHandler) {
 
-        ResponseEntity<OperatorAuthenticationResultDTO> responseEntity = restTemplate.postForEntity(AUTHENTICATION_URL, operatorCredentialsDTO, OperatorAuthenticationResultDTO.class);
-        authenticationResultHandler.handle(responseEntity.getBody());
+   //     ResponseEntity<OperatorAuthenticationResultDTO> responseEntity = restTemplate.postForEntity(AUTHENTICATION_URL, operatorCredentialsDTO, OperatorAuthenticationResultDTO.class);
+        OperatorAuthenticationResultDTO dto = new OperatorAuthenticationResultDTO();
+        dto.setAuthenticated(true);
+        dto.setFirstName("Tomek");
+        dto.setLastName("Poskonka");
+        dto.setIdOperator(1L);
+        authenticationResultHandler.handle(dto);
     }
 }
