@@ -1,33 +1,36 @@
 package sample.rest;
 
-import sample.dto.UserCredentialsDto;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.client.RestTemplate;
+import sample.dto.OperatorAuthenticationResultDTO;
+import sample.dto.OperatorCredentialsDTO;
 
-public class AuthenticatorImpl implements Authenticator{
+public class AuthenticatorImpl implements Authenticator {
+
+    private static final String AUTHENTICATION_URL = "http://localhost:8080/verify_operator_credentials";
+
+    private final RestTemplate restTemplate;
 
 
-    private static final String LOGIN = "admin";
-    private static final String PASSWORD = "adminpass";
+    public AuthenticatorImpl() {
+        restTemplate = new RestTemplate();
+    }
 
     @Override
-    public void authenticate(UserCredentialsDto userCredentialsDto, AuthenticationResultHandler authenticationResultHandler) {
+    public void authenticate(OperatorCredentialsDTO operatorCredentialsDTO, AuthenticationResultHandler authenticationResultHandler) {
 
-        Runnable authenticationTask = createAuthenticationTask(userCredentialsDto, authenticationResultHandler);
+        Runnable authenticationTask = () -> {
+            processAuthentication(operatorCredentialsDTO, authenticationResultHandler);
+        };
         Thread authenticationThread = new Thread(authenticationTask);
         authenticationThread.setDaemon(true);
         authenticationThread.start();
 
     }
 
-    private Runnable createAuthenticationTask(UserCredentialsDto userCredentialsDto, AuthenticationResultHandler authenticationResultHandler) {
-        return () -> {
-            try {
-                Thread.sleep(1000);
-                boolean authenticated = LOGIN.equals(userCredentialsDto.getLogin()) && PASSWORD.equals(userCredentialsDto.getPassword());
-                authenticationResultHandler.handle(authenticated);
+    private void processAuthentication(OperatorCredentialsDTO operatorCredentialsDTO, AuthenticationResultHandler authenticationResultHandler) {
 
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        };
+        ResponseEntity<OperatorAuthenticationResultDTO> responseEntity = restTemplate.postForEntity(AUTHENTICATION_URL, operatorCredentialsDTO, OperatorAuthenticationResultDTO.class);
+        authenticationResultHandler.handle(responseEntity.getBody());
     }
 }
