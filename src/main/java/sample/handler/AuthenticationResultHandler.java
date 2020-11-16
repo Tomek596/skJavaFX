@@ -1,4 +1,4 @@
-package sample.rest;
+package sample.handler;
 
 import sample.dto.OperatorAuthenticationResultDTO;
 

@@ -1,33 +1,30 @@
-.exit-button{
+.cancel-button{
     -fx-background-color: -fx-primary-red;
     -fx-background-radius: 0;
     -fx-text-fill: white;
-    -fx-font-size: 11px;
     -fx-alignment: center;
 }
 
-.exit-button:hover{
+.cancel-button:hover{
     -fx-background-color: -fx-secondary-red;
 }
-
-.title{
-    -fx-font-size: 40;
+.save-button{
     -fx-text-fill: -fx-primary-blue;
-}
-
-.background{
     -fx-background-color: -fx-primary-background;
     -fx-border-color: -fx-primary-blue;
+    -fx-background-radius: 0;
+}
+.save-button:hover{
+    -fx-background-color: -fx-secondary-background;
 }
 .text{
     -fx-text-fill: -fx-primary-blue;
 }
-.login-button{
+.title{
+    -fx-font-size: 25;
     -fx-text-fill: -fx-primary-blue;
+}
+.background {
     -fx-background-color: -fx-primary-background;
     -fx-border-color: -fx-primary-blue;
-    -fx-background-radius: 0;
-}
-.login-button:hover{
-    -fx-background-color: -fx-secondary-background;
 }

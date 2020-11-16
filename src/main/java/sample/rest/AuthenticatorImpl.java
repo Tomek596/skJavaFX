@@ -1,9 +1,9 @@
 package sample.rest;
 
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 import sample.dto.OperatorAuthenticationResultDTO;
 import sample.dto.OperatorCredentialsDTO;
+import sample.handler.AuthenticationResultHandler;
 
 public class AuthenticatorImpl implements Authenticator {
 
